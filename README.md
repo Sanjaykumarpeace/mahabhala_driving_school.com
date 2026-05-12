@@ -1,135 +1,158 @@
-# 🚗 Sri Subramanya Motor Driving Training School
+# 🚗 Mahabhala Driving School — Website
 
-A professional, responsive static website for **Sri Subramanya Motor Driving Training School**, Bengaluru.
+A complete, production-ready static website for **Mahabhala Driving School**, located at JM Complex, Kattigenahalli, Opp. REVA College Main Road, Jala Hobli, Yelahanka, Bengaluru – 560064.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-sri-subramanya-driving-school/
-├── index.html          ← Main HTML page
-├── css/
-│   └── styles.css      ← All styles (dark theme, animations, responsive)
-├── js/
-│   └── main.js         ← Interactivity (navbar, counters, scroll reveal, etc.)
-├── assets/
-│   └── whatsapp.svg    ← WhatsApp logo (green circle icon)
-├── server.py           ← Python local dev server
-└── README.md           ← This file
+mahabhala-driving-school/
+├── index.html      ← Main HTML (all sections)
+├── style.css       ← Full CSS (variables, layout, animations, responsive)
+├── script.js       ← JavaScript (navbar, slider, counter, form, scroll)
+└── README.md       ← This file
 ```
+
+---
+
+## 🌟 Features
+
+| Feature | Description |
+|---|---|
+| **Sticky Navbar** | Transparent → solid on scroll; mobile hamburger menu |
+| **Hero Section** | Full-screen with animated car, counter stats, CTA buttons |
+| **Marquee Strip** | Infinite scrolling services ticker |
+| **About Section** | School info, features, visual card layout |
+| **Courses Grid** | 4 course cards (Basic Car, Premium Car, Two-Wheeler, Refresher) with pricing |
+| **Why Us** | 6 feature cards on dark background |
+| **Testimonials** | Auto-playing slider with dots, prev/next, touch swipe |
+| **Enroll Form** | Validated enquiry form with success state |
+| **Location Section** | Contact info + embedded Google Maps iframe |
+| **Footer** | Full-column footer with links, social, address |
+| **WhatsApp Button** | Floating quick-contact button |
+| **Back to Top** | Appears on scroll |
+| **Reveal Animations** | Intersection Observer scroll-triggered fade-ins |
+| **Counter Animation** | Animated stats (1500+ students, 10 years, 98% pass rate) |
+| **Fully Responsive** | Mobile-first, tested at 320px to 1440px+ |
+
+---
+
+## 🎨 Design System
+
+### Colors
+```css
+--amber:    #f59e0b  /* Primary accent */
+--amber-dk: #d97706  /* Hover states */
+--black:    #0d0d0d  /* Hero, footer, dark sections */
+--light-bg: #f5f0e8  /* About, testimonials, location */
+--white:    #fafafa  /* Cards, body */
+```
+
+### Typography
+- **Display / Headings:** Bebas Neue (Google Fonts)
+- **Italic Accent:** Playfair Display Italic
+- **Body / UI:** DM Sans
+
+### Aesthetic Direction
+**Bold Industrial + Warm Amber** — Heavy typographic headers in Bebas Neue, amber gold accents on dark backgrounds, geometric grid overlays, road-inspired visual motifs.
 
 ---
 
 ## 🚀 Getting Started
 
-### Option 1 — Python Server (Recommended)
-
+### Option 1: Open directly (no server needed)
 ```bash
-python server.py
+# Simply double-click index.html in your file manager
+# OR open in browser:
+open index.html
 ```
 
-Opens at **http://localhost:8080** automatically.
-
-Custom port:
+### Option 2: Local development server
 ```bash
-python server.py --port 3000
+# Using Python
+python3 -m http.server 3000
+# Then visit: http://localhost:3000
+
+# Using Node.js (npx)
+npx serve .
 ```
 
-Requires Python 3.6+. No external dependencies.
-
-### Option 2 — VS Code Live Server
-
-1. Install the **Live Server** extension by Ritwick Dey in VS Code.
-2. Right-click `index.html` → **"Open with Live Server"**.
-
-### Option 3 — Open Directly
-
-Double-click `index.html` to open in your browser.  
-*(Note: some browser security policies block local SVG assets — use a server for best results.)*
+### Option 3: Deploy to hosting
+Upload all 3 files (`index.html`, `style.css`, `script.js`) to any static host:
+- **Netlify** — Drag & drop the folder at netlify.com/drop
+- **Vercel** — `vercel deploy`
+- **GitHub Pages** — Push to a `gh-pages` branch
+- **cPanel / Shared Hosting** — Upload via File Manager to `public_html/`
 
 ---
 
-## 📞 Contact Details
+## ✏️ Customisation Guide
 
-| Channel   | Number / Info                  |
-|-----------|-------------------------------|
-| Phone     | +91 99168 88789               |
-| WhatsApp  | +91 99168 88789               |
-| Hours     | 9:00 AM – 7:00 PM (Mon–Sun)   |
-| Address   | No. 205, Dwarka Nagar, Opp. Panchami Sagar Hotel, Kattigenahalli, Bengaluru 560064 |
+### Update Contact Number
+Search and replace all instances of `+919876543210` in `index.html` with the real phone number.
 
----
+### Update Google Maps Embed
+In `index.html`, find the `<iframe>` inside `.map-embed` and replace the `src` with the actual embed URL from:
+> Google Maps → Share → Embed a map → Copy HTML → paste the `src` URL
 
-## 💬 WhatsApp Integration
+### Update Course Pricing
+Find the `.course-price` blocks in `index.html` and update the `₹` values.
 
-All WhatsApp links open `https://wa.me/919916888789` with a pre-filled default message:
+### Change Business Name / Logo
+Update the `.logo` sections in both the `<nav>` and `<footer>`.
 
-> *"Welcome! Thank you for choosing us and confirming your booking. We're excited to serve you and will reach out shortly with the next steps."*
-
-WhatsApp links appear in:
-- Navbar CTA button
-- Hero section buttons
-- CTA banner
-- Contact section
-- Footer
-- Floating WhatsApp button (bottom-right)
-
-To update the number or message, search-and-replace in `index.html`:
-
-```
-Find:    wa.me/919916888789
-Replace: wa.me/91XXXXXXXXXX
+### Add Real Phone Number for WhatsApp
+```html
+<!-- Change 919876543210 to: 91 + actual 10-digit number -->
+<a href="https://wa.me/919876543210" ...>
 ```
 
----
-
-## 🎨 Tech Stack
-
-| Layer      | Technology                          |
-|------------|-------------------------------------|
-| HTML       | Semantic HTML5                      |
-| CSS        | Custom CSS3 (variables, grid, flex) |
-| JavaScript | Vanilla ES6+ (no frameworks)        |
-| Icons      | Lucide Icons (CDN)                  |
-| Fonts      | Bebas Neue + Outfit (Google Fonts)  |
-| Backend    | Python `http.server` (dev only)     |
+### Add Google Analytics
+Paste your GA4 script tag just before `</head>` in `index.html`.
 
 ---
 
-## 🖥️ Features
+## 📋 Sections Overview
 
-- ✅ Sticky navbar with scroll-triggered background
-- ✅ Mobile hamburger menu
-- ✅ Smooth scroll navigation
-- ✅ Animated scroll-progress bar
-- ✅ Counter animation (3000+, 95%, 22, 15+)
-- ✅ Scroll-reveal card animations
-- ✅ WhatsApp floating button with pulse animation
-- ✅ Fully responsive (mobile, tablet, desktop)
-- ✅ Dark amber theme
-
----
-
-## 🌐 Deployment (GitHub Pages)
-
-1. Push this folder to a GitHub repository.
-2. Go to **Settings → Pages**.
-3. Set **Source** to `main` branch, `/root` folder.
-4. Your site will be live at `https://<username>.github.io/<repo-name>/`.
+| Section | ID | Purpose |
+|---|---|---|
+| Navbar | `#navbar` | Fixed navigation + CTA |
+| Hero | `#hero` | First impression, stats, CTAs |
+| About | `#about` | School story, credentials |
+| Courses | `#courses` | 4 programme cards with pricing |
+| Why Us | `#why-us` | Trust signals, USPs |
+| Testimonials | `#gallery` | Student reviews slider |
+| Enroll | `#enroll` | Lead capture form |
+| Contact / Map | `#contact` | Address, hours, embed map |
+| Footer | — | Links, social, copyright |
 
 ---
 
-## ✏️ Customisation
+## 🌐 Browser Support
 
-| What to change          | Where                        |
-|-------------------------|------------------------------|
-| Phone / WhatsApp number | `index.html` (find & replace) |
-| Colors / fonts          | `css/styles.css` `:root` block |
-| Sections / content      | `index.html`                 |
-| Animations / logic      | `js/main.js`                 |
-| WhatsApp icon           | `assets/whatsapp.svg`        |
+| Browser | Support |
+|---|---|
+| Chrome 90+ | ✅ Full |
+| Firefox 88+ | ✅ Full |
+| Safari 14+ | ✅ Full |
+| Edge 90+ | ✅ Full |
+| Mobile Chrome/Safari | ✅ Full |
+| IE 11 | ❌ Not supported |
 
 ---
 
-*Built for Sri Subramanya Motor Driving Training School, Bengaluru © 2025*
+## 📍 Business Information
+
+**Mahabhala Driving School**  
+JM Complex, Kattigenahalli,  
+Opp. REVA College Main Road, Jala Hobli,  
+Yelahanka, Bengaluru, Karnataka – 560064  
+
+📌 Google Maps: https://maps.app.goo.gl/9XZzawybM5vmDdy37
+
+---
+
+## 📄 License
+
+This website was custom built for Mahabhala Driving School. All rights reserved © 2025 Mahabhala Driving School.
