@@ -854,14 +854,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   html { font-size: 15px; }
   .section { padding: 64px 0; }
   .container { padding: 0 16px; }
-  .navbar { background: rgba(2,6,23,0.96); border-bottom: 1px solid rgba(245,158,11,0.42); }
+  .navbar { background: rgba(2,6,23,0.96); border-bottom: none; box-shadow: none; }
   .nav-inner { padding: 0 16px; }
   .logo { gap: 10px; }
   .nav-inner { height: var(--navbar-h); display: flex; align-items: center; }
-  .logo { align-items: center; }
+  .logo { align-items: center; min-width: 0; }
   .logo-icon { width: 40px; height: 40px; border-radius: 10px; font-size: 1.05rem; flex: 0 0 auto; }
-  .logo-main { font-size: 1rem; max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1; }
-  .logo-sub { display: none; }
+  .logo-text { display: flex; flex-direction: column; min-width: 0; }
+  .logo-main {
+    font-size: 1.08rem;
+    max-width: none;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1;
+  }
+  .logo-sub {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
   .nav-links {
     position: fixed; top: var(--navbar-h); left: 0; right: 0;
     background: var(--black);
