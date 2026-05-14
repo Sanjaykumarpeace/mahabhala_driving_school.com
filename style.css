@@ -364,6 +364,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 3px solid var(--border);
   background: #fff;
 }
+.about-feature-image {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 .img-placeholder {
   height: 340px;
   background: linear-gradient(135deg, var(--black) 0%, #333 100%);
@@ -605,6 +613,115 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .why-icon { font-size: 2.4rem; margin-bottom: 16px; }
 .why-card h4 { font-family: var(--font-head); font-size: 1.2rem; color: var(--white); letter-spacing: 0.04em; margin-bottom: 10px; }
 .why-card p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+/* ══ PROMOTIONAL GALLERY ══ */
+.promotional-gallery { background: linear-gradient(135deg, #fafafa 0%, #fff7e7 100%); position: relative; }
+.promotional-gallery .container { max-width: 1360px; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 42px rgba(0,0,0,0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.gallery-item:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(0,0,0,0.16); }
+.gallery-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  min-height: 430px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f6f8fb 0%, #eef2f7 100%);
+}
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #f8fafc;
+  padding: 10px;
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover .gallery-image { transform: scale(1.02); }
+.gallery-image-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(245,158,11,0.22), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(2,132,199,0.16), transparent 45%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+.fallback-icon { font-size: 2.1rem; }
+.fallback-text {
+  font-family: var(--font-head);
+  letter-spacing: 0.06em;
+  color: #1f2937;
+  font-size: 1.05rem;
+}
+.gallery-image-wrapper.image-error .gallery-image { opacity: 0; }
+.gallery-image-wrapper.image-error .gallery-image-fallback {
+  opacity: 1;
+  transform: scale(1);
+}
+.gallery-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.35));
+  color: var(--white);
+  padding: 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: var(--font-head);
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; transform: translateY(0); }
+.gallery-cta { animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.85; } }
+
+/* ══ TRAFFIC SIGNALS ══ */
+.traffic-accent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background: linear-gradient(to right, transparent, rgba(245,158,11,0.1), transparent);
+  animation: trafficPulse 2s ease-in-out infinite;
+}
+.traffic-signal {
+  font-size: 2.5rem;
+  display: inline-block;
+  animation: trafficBounce 1.5s ease-in-out infinite;
+}
+@keyframes trafficPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+@keyframes trafficBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 
 /* ══ TESTIMONIALS ══ */
 .testimonials { background: var(--light-bg); }
@@ -960,6 +1077,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Avoid floating WhatsApp button overlapping the mobile navbar/menu */
   .whatsapp-float { display: none; }
   .form-row { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
+  .gallery-image-wrapper { min-height: 360px; }
+  .gallery-overlay { font-size: 0.9rem; padding: 16px; }
+  .traffic-signal { font-size: 2rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
@@ -972,6 +1093,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .section-title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
   .enroll-form { padding: 24px 20px; }
   .course-card { padding: 24px 20px; }
+  .gallery-image-wrapper { min-height: 320px; }
   .testimonial-card { padding: 22px 18px; }
 }
 

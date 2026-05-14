@@ -243,7 +243,38 @@ const sectionObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => sectionObserver.observe(s));
 
 /* ═══════════════════════════════
-   7. NAVBAR ALWAYS SCROLLED ON MOBILE
+   7. GALLERY IMAGE FALLBACKS
+═══════════════════════════════ */
+const galleryImages = document.querySelectorAll('.gallery-image');
+
+galleryImages.forEach((img) => {
+  const wrapper = img.closest('.gallery-image-wrapper');
+  if (!wrapper) return;
+
+  const fallback = wrapper.querySelector('.gallery-image-fallback');
+  const fallbackLabel = wrapper.dataset.fallbackLabel;
+  if (fallback && fallbackLabel) {
+    const textEl = fallback.querySelector('.fallback-text');
+    if (textEl) textEl.textContent = fallbackLabel;
+  }
+
+  const showFallback = () => {
+    wrapper.classList.add('image-error');
+  };
+
+  img.addEventListener('error', showFallback, { once: true });
+  img.addEventListener('load', () => {
+    wrapper.classList.remove('image-error');
+  });
+
+  // Handle cached broken images on initial render.
+  if (img.complete && img.naturalWidth === 0) {
+    showFallback();
+  }
+});
+
+/* ═══════════════════════════════
+   8. NAVBAR ALWAYS SCROLLED ON MOBILE
 ═══════════════════════════════ */
 function handleNavbar() {
   if (window.innerWidth <= 768 || window.scrollY > 60) {
